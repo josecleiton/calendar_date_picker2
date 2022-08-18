@@ -19,11 +19,14 @@ class CalendarDatePicker2Config {
     this.selectedDayTextStyle,
     this.selectedDayHighlightColor,
     this.disabledDayTextStyle,
+    this.todayColor,
+    Curve? curve,
   })  : calendarType = calendarType ?? CalendarDatePicker2Type.single,
         firstDate = firstDate ?? DateTime(1970),
         lastDate = lastDate ?? DateTime(DateTime.now().year + 50),
         currentDate = currentDate ?? DateUtils.dateOnly(DateTime.now()),
-        calendarViewMode = calendarViewMode ?? DatePickerMode.day;
+        calendarViewMode = calendarViewMode ?? DatePickerMode.day,
+        curve = curve ?? Curves.easeIn;
 
   /// The enabled date picker mode
   final CalendarDatePicker2Type calendarType;
@@ -69,6 +72,12 @@ class CalendarDatePicker2Config {
 
   /// Custom text style for disabled calendar day(s)
   final TextStyle? disabledDayTextStyle;
+
+  /// The today color
+  final Color? todayColor;
+
+  /// Curve to use on page transition
+  final Curve curve;
 
   CalendarDatePicker2Config copyWith({
     CalendarDatePicker2Type? calendarType,
@@ -127,6 +136,8 @@ class CalendarDatePicker2WithActionButtonsConfig
     TextStyle? selectedDayTextStyle,
     Color? selectedDayHighlightColor,
     TextStyle? disabledDayTextStyle,
+    Color? todayColor,
+    Curve? curve,
     this.gapBetweenCalendarAndButtons,
     this.cancelButtonTextStyle,
     this.cancelButton,
@@ -150,6 +161,8 @@ class CalendarDatePicker2WithActionButtonsConfig
           selectedDayTextStyle: selectedDayTextStyle,
           selectedDayHighlightColor: selectedDayHighlightColor,
           disabledDayTextStyle: disabledDayTextStyle,
+          todayColor: todayColor,
+          curve: curve,
         );
 
   /// The gap between calendar and action buttons
