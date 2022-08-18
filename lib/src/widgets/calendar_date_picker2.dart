@@ -619,7 +619,7 @@ class _MonthPickerState extends State<_MonthPicker> {
     if (!_isDisplayingLastMonth) {
       _pageController.nextPage(
         duration: _monthScrollDuration,
-        curve: Curves.ease,
+        curve: widget.config.curve,
       );
     }
   }
@@ -629,7 +629,7 @@ class _MonthPickerState extends State<_MonthPicker> {
     if (!_isDisplayingFirstMonth) {
       _pageController.previousPage(
         duration: _monthScrollDuration,
-        curve: Curves.ease,
+        curve: widget.config.curve,
       );
     }
   }
@@ -643,7 +643,7 @@ class _MonthPickerState extends State<_MonthPicker> {
       _pageController.animateToPage(
         monthPage,
         duration: _monthScrollDuration,
-        curve: Curves.ease,
+        curve: widget.config.curve,
       );
     }
   }
@@ -1031,10 +1031,16 @@ class _DayPickerState extends State<_DayPicker> {
         } else if (isToday) {
           // The current day gets a different text color and a circle stroke
           // border.
-          dayColor = widget.config.selectedDayHighlightColor ?? todayColor;
+          dayColor = widget.config.todayColor ??
+              widget.config.selectedDayHighlightColor ??
+              todayColor;
           decoration = BoxDecoration(
             borderRadius: widget.config.dayBorderRadius,
-            border: Border.all(color: dayColor),
+            border: Border.all(
+              color: widget.config.todayColor ??
+                  widget.config.selectedDayHighlightColor ??
+                  todayColor,
+            ),
             shape: widget.config.dayBorderRadius != null
                 ? BoxShape.rectangle
                 : BoxShape.circle,

@@ -44,11 +44,14 @@ class CalendarDatePicker2Config {
     this.disableYearPicker,
     this.centerAlignModePickerButton,
     this.customModePickerButtonIcon,
+    this.todayColor,
+    Curve? curve,
   })  : calendarType = calendarType ?? CalendarDatePicker2Type.single,
         firstDate = firstDate ?? DateTime(1970),
         lastDate = lastDate ?? DateTime(DateTime.now().year + 50),
         currentDate = currentDate ?? DateUtils.dateOnly(DateTime.now()),
-        calendarViewMode = calendarViewMode ?? DatePickerMode.day;
+        calendarViewMode = calendarViewMode ?? DatePickerMode.day,
+        curve = curve ?? Curves.easeIn;
 
   /// The enabled date picker mode
   final CalendarDatePicker2Type calendarType;
@@ -135,6 +138,12 @@ class CalendarDatePicker2Config {
 
   /// Custom icon for the mode picker button icon
   final Widget? customModePickerButtonIcon;
+
+  /// The today color
+  final Color? todayColor;
+
+  /// Curve to use on page transition
+  final Curve curve;
 
   CalendarDatePicker2Config copyWith({
     CalendarDatePicker2Type? calendarType,
@@ -234,6 +243,8 @@ class CalendarDatePicker2WithActionButtonsConfig
     bool? disableYearPicker,
     bool? centerAlignModePickerButton,
     Widget? customModePickerButtonIcon,
+    Color? todayColor,
+    Curve? curve,
     this.gapBetweenCalendarAndButtons,
     this.cancelButtonTextStyle,
     this.cancelButton,
@@ -271,6 +282,8 @@ class CalendarDatePicker2WithActionButtonsConfig
           disableYearPicker: disableYearPicker,
           centerAlignModePickerButton: centerAlignModePickerButton,
           customModePickerButtonIcon: customModePickerButtonIcon,
+          todayColor: todayColor,
+          curve: curve,
         );
 
   /// The gap between calendar and action buttons
