@@ -21,6 +21,7 @@ class CalendarDatePicker2Config {
     this.selectedDayHighlightColor,
     this.disabledDayTextStyle,
     this.todayColor,
+    this.todayTextStyle,
     this.yearTextStyle,
     this.controlColor,
   })  : calendarType = calendarType ?? CalendarDatePicker2Type.single,
@@ -81,6 +82,9 @@ class CalendarDatePicker2Config {
   /// The today color
   final Color? todayColor;
 
+  /// The today text style
+  final TextStyle? todayTextStyle;
+
   /// Year text style
   final TextStyle? yearTextStyle;
 
@@ -105,6 +109,7 @@ class CalendarDatePicker2Config {
     Color? selectedDayHighlightColor,
     TextStyle? disabledDayTextStyle,
     Color? todayColor,
+    TextStyle? todayTextStyle,
     TextStyle? yearTextStyle,
     Color? controlColor,
   }) {
@@ -128,6 +133,7 @@ class CalendarDatePicker2Config {
           selectedDayHighlightColor ?? this.selectedDayHighlightColor,
       disabledDayTextStyle: disabledDayTextStyle ?? this.disabledDayTextStyle,
       todayColor: todayColor ?? this.todayColor,
+      todayTextStyle: todayTextStyle ?? this.todayTextStyle,
       yearTextStyle: yearTextStyle ?? this.yearTextStyle,
       controlColor: controlColor ?? this.controlColor,
     );
@@ -154,6 +160,7 @@ class CalendarDatePicker2WithActionButtonsConfig
     Color? selectedDayHighlightColor,
     TextStyle? disabledDayTextStyle,
     Color? todayColor,
+    TextStyle? todayTextStyle,
     TextStyle? yearTextStyle,
     Color? controlColor,
     this.gapBetweenCalendarAndButtons,
@@ -181,6 +188,7 @@ class CalendarDatePicker2WithActionButtonsConfig
           selectedDayHighlightColor: selectedDayHighlightColor,
           disabledDayTextStyle: disabledDayTextStyle,
           todayColor: todayColor,
+          todayTextStyle: todayTextStyle,
           yearTextStyle: yearTextStyle,
           controlColor: controlColor,
         );
@@ -225,6 +233,7 @@ class CalendarDatePicker2WithActionButtonsConfig
     Color? selectedDayHighlightColor,
     TextStyle? disabledDayTextStyle,
     Color? todayColor,
+    TextStyle? todayTextStyle,
     TextStyle? yearTextStyle,
     Color? controlColor,
     double? gapBetweenCalendarAndButtons,
@@ -255,6 +264,7 @@ class CalendarDatePicker2WithActionButtonsConfig
           selectedDayHighlightColor ?? this.selectedDayHighlightColor,
       disabledDayTextStyle: disabledDayTextStyle ?? this.disabledDayTextStyle,
       todayColor: todayColor ?? this.todayColor,
+      todayTextStyle: todayTextStyle ?? this.todayTextStyle,
       yearTextStyle: yearTextStyle ?? this.yearTextStyle,
       controlColor: controlColor ?? this.controlColor,
       gapBetweenCalendarAndButtons:

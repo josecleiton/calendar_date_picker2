@@ -986,6 +986,7 @@ class _DayPickerState extends State<_DayPicker> {
               widget.config.selectedDayHighlightColor ??
               todayColor;
           decoration = BoxDecoration(
+            color: widget.config.todayColor,
             border: Border.all(
               color: widget.config.todayColor ??
                   widget.config.selectedDayHighlightColor ??
@@ -1005,6 +1006,8 @@ class _DayPickerState extends State<_DayPicker> {
           if (widget.config.disabledDayTextStyle != null) {
             customDayTextStyle = widget.config.disabledDayTextStyle;
           }
+        } else if (isToday) {
+          customDayTextStyle = widget.config.todayTextStyle;
         }
 
         if (isSelectedDay) {
@@ -1257,8 +1260,9 @@ class _YearPickerState extends State<YearPicker> {
       textColor = widget.config.disabledDayTextStyle?.color ??
           colorScheme.onSurface.withOpacity(0.38);
     } else if (isCurrentYear) {
-      textColor =
-          widget.config.selectedDayHighlightColor ?? colorScheme.primary;
+      textColor = widget.config.todayTextStyle?.color ??
+          widget.config.selectedDayHighlightColor ??
+          colorScheme.primary;
     } else {
       textColor = widget.config.yearTextStyle?.color ??
           widget.config.dayTextStyle?.color ??
@@ -1271,15 +1275,16 @@ class _YearPickerState extends State<YearPicker> {
     BoxDecoration? decoration;
     if (isSelected) {
       decoration = BoxDecoration(
-        color: widget.config.todayColor ??
-            widget.config.selectedDayHighlightColor ??
-            colorScheme.primary,
+        color: widget.config.selectedDayHighlightColor ?? colorScheme.primary,
         borderRadius: BorderRadius.circular(decorationHeight / 2),
       );
     } else if (isCurrentYear && !isDisabled) {
       decoration = BoxDecoration(
+        color: widget.config.todayColor,
         border: Border.all(
-          color: widget.config.selectedDayHighlightColor ?? colorScheme.primary,
+          color: widget.config.todayColor ??
+              widget.config.selectedDayHighlightColor ??
+              colorScheme.primary,
         ),
         borderRadius: BorderRadius.circular(decorationHeight / 2),
       );
