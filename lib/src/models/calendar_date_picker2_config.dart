@@ -22,6 +22,7 @@ class CalendarDatePicker2Config {
     DateTime? lastDate,
     DateTime? currentDate,
     DatePickerMode? calendarViewMode,
+    Curve? curve,
     this.weekdayLabels,
     this.weekdayLabelTextStyle,
     this.firstDayOfWeek,
@@ -45,7 +46,7 @@ class CalendarDatePicker2Config {
     this.centerAlignModePickerButton,
     this.customModePickerButtonIcon,
     this.todayColor,
-    Curve? curve,
+    this.controlColor,
   })  : calendarType = calendarType ?? CalendarDatePicker2Type.single,
         firstDate = firstDate ?? DateTime(1970),
         lastDate = lastDate ?? DateTime(DateTime.now().year + 50),
@@ -68,12 +69,10 @@ class CalendarDatePicker2Config {
   /// The initially displayed view of the calendar picker.
   final DatePickerMode calendarViewMode;
 
-  /// Custom weekday labels for the current locale, MUST starts from Sunday
-  /// Examples:
-  ///
-  /// - US English: S, M, T, W, T, F, S
-  /// - Russian: вс, пн, вт, ср, чт, пт, сб - notice that the list begins with
-  ///   вс (Sunday) even though the first day of week for Russian is Monday.
+  /// Curve to use on page transition
+  final Curve curve;
+
+  /// Custom weekday label sunday's value is 0, by default S M T W T F S
   final List<String>? weekdayLabels;
 
   /// Custom text style for weekday labels
@@ -142,8 +141,8 @@ class CalendarDatePicker2Config {
   /// The today color
   final Color? todayColor;
 
-  /// Curve to use on page transition
-  final Curve curve;
+  /// The control color
+  final Color? controlColor;
 
   CalendarDatePicker2Config copyWith({
     CalendarDatePicker2Type? calendarType,
@@ -152,6 +151,7 @@ class CalendarDatePicker2Config {
     DateTime? currentDate,
     DatePickerMode? calendarViewMode,
     List<String>? weekdayLabels,
+    Curve? curve,
     TextStyle? weekdayLabelTextStyle,
     int? firstDayOfWeek,
     double? controlsHeight,
@@ -173,6 +173,8 @@ class CalendarDatePicker2Config {
     bool? disableYearPicker,
     bool? centerAlignModePickerButton,
     Widget? customModePickerButtonIcon,
+    Color? todayColor,
+    Color? controlColor,
   }) {
     return CalendarDatePicker2Config(
       calendarType: calendarType ?? this.calendarType,
@@ -181,6 +183,7 @@ class CalendarDatePicker2Config {
       currentDate: currentDate ?? this.currentDate,
       calendarViewMode: calendarViewMode ?? this.calendarViewMode,
       weekdayLabels: weekdayLabels ?? this.weekdayLabels,
+      curve: curve,
       weekdayLabelTextStyle:
           weekdayLabelTextStyle ?? this.weekdayLabelTextStyle,
       firstDayOfWeek: firstDayOfWeek ?? this.firstDayOfWeek,
@@ -209,6 +212,8 @@ class CalendarDatePicker2Config {
           centerAlignModePickerButton ?? this.centerAlignModePickerButton,
       customModePickerButtonIcon:
           customModePickerButtonIcon ?? this.customModePickerButtonIcon,
+      todayColor: todayColor ?? this.todayColor,
+      controlColor: controlColor ?? this.controlColor,
     );
   }
 }
@@ -221,6 +226,7 @@ class CalendarDatePicker2WithActionButtonsConfig
     DateTime? lastDate,
     DateTime? currentDate,
     DatePickerMode? calendarViewMode,
+    Curve? curve,
     List<String>? weekdayLabels,
     TextStyle? weekdayLabelTextStyle,
     int? firstDayOfWeek,
@@ -244,7 +250,7 @@ class CalendarDatePicker2WithActionButtonsConfig
     bool? centerAlignModePickerButton,
     Widget? customModePickerButtonIcon,
     Color? todayColor,
-    Curve? curve,
+    Color? controlColor,
     this.gapBetweenCalendarAndButtons,
     this.cancelButtonTextStyle,
     this.cancelButton,
@@ -260,6 +266,7 @@ class CalendarDatePicker2WithActionButtonsConfig
           lastDate: lastDate,
           currentDate: currentDate,
           calendarViewMode: calendarViewMode,
+          curve: curve,
           weekdayLabels: weekdayLabels,
           weekdayLabelTextStyle: weekdayLabelTextStyle,
           firstDayOfWeek: firstDayOfWeek,
@@ -283,7 +290,7 @@ class CalendarDatePicker2WithActionButtonsConfig
           centerAlignModePickerButton: centerAlignModePickerButton,
           customModePickerButtonIcon: customModePickerButtonIcon,
           todayColor: todayColor,
-          curve: curve,
+          controlColor: controlColor,
         );
 
   /// The gap between calendar and action buttons
@@ -321,6 +328,7 @@ class CalendarDatePicker2WithActionButtonsConfig
     DateTime? currentDate,
     DatePickerMode? calendarViewMode,
     List<String>? weekdayLabels,
+    Curve? curve,
     TextStyle? weekdayLabelTextStyle,
     int? firstDayOfWeek,
     double? controlsHeight,
@@ -334,6 +342,8 @@ class CalendarDatePicker2WithActionButtonsConfig
     TextStyle? todayTextStyle,
     TextStyle? yearTextStyle,
     TextStyle? selectedYearTextStyle,
+    Color? todayColor,
+    Color? controlColor,
     double? gapBetweenCalendarAndButtons,
     TextStyle? cancelButtonTextStyle,
     Widget? cancelButton,
@@ -359,6 +369,7 @@ class CalendarDatePicker2WithActionButtonsConfig
       currentDate: currentDate ?? this.currentDate,
       calendarViewMode: calendarViewMode ?? this.calendarViewMode,
       weekdayLabels: weekdayLabels ?? this.weekdayLabels,
+      curve: curve ?? this.curve,
       weekdayLabelTextStyle:
           weekdayLabelTextStyle ?? this.weekdayLabelTextStyle,
       firstDayOfWeek: firstDayOfWeek ?? this.firstDayOfWeek,
@@ -375,6 +386,8 @@ class CalendarDatePicker2WithActionButtonsConfig
       yearTextStyle: yearTextStyle ?? this.yearTextStyle,
       selectedYearTextStyle:
           selectedYearTextStyle ?? this.selectedYearTextStyle,
+      todayColor: todayColor ?? this.todayColor,
+      controlColor: controlColor ?? this.controlColor,
       gapBetweenCalendarAndButtons:
           gapBetweenCalendarAndButtons ?? this.gapBetweenCalendarAndButtons,
       cancelButtonTextStyle:
