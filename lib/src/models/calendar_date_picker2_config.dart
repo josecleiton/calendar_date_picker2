@@ -9,6 +9,7 @@ class CalendarDatePicker2Config {
     DateTime? lastDate,
     DateTime? currentDate,
     DatePickerMode? calendarViewMode,
+    Curve? curve,
     this.weekdayLabels,
     this.weekdayLabelTextStyle,
     this.controlsHeight,
@@ -20,7 +21,8 @@ class CalendarDatePicker2Config {
     this.selectedDayHighlightColor,
     this.disabledDayTextStyle,
     this.todayColor,
-    Curve? curve,
+    this.yearTextStyle,
+    this.controlColor,
   })  : calendarType = calendarType ?? CalendarDatePicker2Type.single,
         firstDate = firstDate ?? DateTime(1970),
         lastDate = lastDate ?? DateTime(DateTime.now().year + 50),
@@ -42,6 +44,9 @@ class CalendarDatePicker2Config {
 
   /// The initially displayed view of the calendar picker.
   final DatePickerMode calendarViewMode;
+
+  /// Curve to use on page transition
+  final Curve curve;
 
   /// Custom weekday label sunday's value is 0, by default S M T W T F S
   final List<String>? weekdayLabels;
@@ -76,8 +81,11 @@ class CalendarDatePicker2Config {
   /// The today color
   final Color? todayColor;
 
-  /// Curve to use on page transition
-  final Curve curve;
+  /// Year text style
+  final TextStyle? yearTextStyle;
+
+  /// The control color
+  final Color? controlColor;
 
   CalendarDatePicker2Config copyWith({
     CalendarDatePicker2Type? calendarType,
@@ -86,6 +94,7 @@ class CalendarDatePicker2Config {
     DateTime? currentDate,
     DatePickerMode? calendarViewMode,
     List<String>? weekdayLabels,
+    Curve? curve,
     TextStyle? weekdayLabelTextStyle,
     double? controlsHeight,
     Widget? lastMonthIcon,
@@ -95,6 +104,9 @@ class CalendarDatePicker2Config {
     TextStyle? selectedDayTextStyle,
     Color? selectedDayHighlightColor,
     TextStyle? disabledDayTextStyle,
+    Color? todayColor,
+    TextStyle? yearTextStyle,
+    Color? controlColor,
   }) {
     return CalendarDatePicker2Config(
       calendarType: calendarType ?? this.calendarType,
@@ -103,6 +115,7 @@ class CalendarDatePicker2Config {
       currentDate: currentDate ?? this.currentDate,
       calendarViewMode: calendarViewMode ?? this.calendarViewMode,
       weekdayLabels: weekdayLabels ?? this.weekdayLabels,
+      curve: curve,
       weekdayLabelTextStyle:
           weekdayLabelTextStyle ?? this.weekdayLabelTextStyle,
       controlsHeight: controlsHeight ?? this.controlsHeight,
@@ -114,6 +127,9 @@ class CalendarDatePicker2Config {
       selectedDayHighlightColor:
           selectedDayHighlightColor ?? this.selectedDayHighlightColor,
       disabledDayTextStyle: disabledDayTextStyle ?? this.disabledDayTextStyle,
+      todayColor: todayColor ?? this.todayColor,
+      yearTextStyle: yearTextStyle ?? this.yearTextStyle,
+      controlColor: controlColor ?? this.controlColor,
     );
   }
 }
@@ -126,6 +142,7 @@ class CalendarDatePicker2WithActionButtonsConfig
     DateTime? lastDate,
     DateTime? currentDate,
     DatePickerMode? calendarViewMode,
+    Curve? curve,
     List<String>? weekdayLabels,
     TextStyle? weekdayLabelTextStyle,
     double? controlsHeight,
@@ -137,7 +154,8 @@ class CalendarDatePicker2WithActionButtonsConfig
     Color? selectedDayHighlightColor,
     TextStyle? disabledDayTextStyle,
     Color? todayColor,
-    Curve? curve,
+    TextStyle? yearTextStyle,
+    Color? controlColor,
     this.gapBetweenCalendarAndButtons,
     this.cancelButtonTextStyle,
     this.cancelButton,
@@ -151,6 +169,7 @@ class CalendarDatePicker2WithActionButtonsConfig
           lastDate: lastDate,
           currentDate: currentDate,
           calendarViewMode: calendarViewMode,
+          curve: curve,
           weekdayLabels: weekdayLabels,
           weekdayLabelTextStyle: weekdayLabelTextStyle,
           controlsHeight: controlsHeight,
@@ -162,7 +181,8 @@ class CalendarDatePicker2WithActionButtonsConfig
           selectedDayHighlightColor: selectedDayHighlightColor,
           disabledDayTextStyle: disabledDayTextStyle,
           todayColor: todayColor,
-          curve: curve,
+          yearTextStyle: yearTextStyle,
+          controlColor: controlColor,
         );
 
   /// The gap between calendar and action buttons
@@ -194,6 +214,7 @@ class CalendarDatePicker2WithActionButtonsConfig
     DateTime? currentDate,
     DatePickerMode? calendarViewMode,
     List<String>? weekdayLabels,
+    Curve? curve,
     TextStyle? weekdayLabelTextStyle,
     double? controlsHeight,
     Widget? lastMonthIcon,
@@ -203,6 +224,9 @@ class CalendarDatePicker2WithActionButtonsConfig
     TextStyle? selectedDayTextStyle,
     Color? selectedDayHighlightColor,
     TextStyle? disabledDayTextStyle,
+    Color? todayColor,
+    TextStyle? yearTextStyle,
+    Color? controlColor,
     double? gapBetweenCalendarAndButtons,
     TextStyle? cancelButtonTextStyle,
     Widget? cancelButton,
@@ -218,6 +242,7 @@ class CalendarDatePicker2WithActionButtonsConfig
       currentDate: currentDate ?? this.currentDate,
       calendarViewMode: calendarViewMode ?? this.calendarViewMode,
       weekdayLabels: weekdayLabels ?? this.weekdayLabels,
+      curve: curve ?? this.curve,
       weekdayLabelTextStyle:
           weekdayLabelTextStyle ?? this.weekdayLabelTextStyle,
       controlsHeight: controlsHeight ?? this.controlsHeight,
@@ -229,6 +254,9 @@ class CalendarDatePicker2WithActionButtonsConfig
       selectedDayHighlightColor:
           selectedDayHighlightColor ?? this.selectedDayHighlightColor,
       disabledDayTextStyle: disabledDayTextStyle ?? this.disabledDayTextStyle,
+      todayColor: todayColor ?? this.todayColor,
+      yearTextStyle: yearTextStyle ?? this.yearTextStyle,
+      controlColor: controlColor ?? this.controlColor,
       gapBetweenCalendarAndButtons:
           gapBetweenCalendarAndButtons ?? this.gapBetweenCalendarAndButtons,
       cancelButtonTextStyle:

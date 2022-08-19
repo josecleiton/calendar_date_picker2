@@ -749,7 +749,7 @@ class _MonthPickerState extends State<_MonthPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final Color controlColor =
+    final Color controlColor = widget.config.controlColor ??
         Theme.of(context).colorScheme.onSurface.withOpacity(0.60);
 
     return Semantics(
@@ -1251,21 +1251,29 @@ class _YearPickerState extends State<YearPicker> {
 
     final Color textColor;
     if (isSelected) {
-      textColor = colorScheme.onPrimary;
+      textColor =
+          widget.config.selectedDayTextStyle?.color ?? colorScheme.onPrimary;
     } else if (isDisabled) {
-      textColor = colorScheme.onSurface.withOpacity(0.38);
+      textColor = widget.config.disabledDayTextStyle?.color ??
+          colorScheme.onSurface.withOpacity(0.38);
     } else if (isCurrentYear) {
       textColor =
           widget.config.selectedDayHighlightColor ?? colorScheme.primary;
     } else {
-      textColor = colorScheme.onSurface.withOpacity(0.87);
+      textColor = widget.config.yearTextStyle?.color ??
+          widget.config.dayTextStyle?.color ??
+          colorScheme.onSurface.withOpacity(0.87);
     }
-    final TextStyle? itemStyle = textTheme.bodyText1?.apply(color: textColor);
+    final TextStyle? itemStyle =
+        (widget.config.yearTextStyle ?? textTheme.bodyText1)
+            ?.apply(color: textColor);
 
     BoxDecoration? decoration;
     if (isSelected) {
       decoration = BoxDecoration(
-        color: widget.config.selectedDayHighlightColor ?? colorScheme.primary,
+        color: widget.config.todayColor ??
+            widget.config.selectedDayHighlightColor ??
+            colorScheme.primary,
         borderRadius: BorderRadius.circular(decorationHeight / 2),
       );
     } else if (isCurrentYear && !isDisabled) {
