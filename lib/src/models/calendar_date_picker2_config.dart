@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 enum CalendarDatePicker2Type { single, multi, range }
 
+enum CalendarDatePicker2FocusedDay { initial, current }
+
 class CalendarDatePicker2Config {
   CalendarDatePicker2Config({
     CalendarDatePicker2Type? calendarType,
@@ -24,6 +26,7 @@ class CalendarDatePicker2Config {
     this.todayTextStyle,
     this.yearTextStyle,
     this.controlColor,
+    this.focusedDay = CalendarDatePicker2FocusedDay.initial,
   })  : calendarType = calendarType ?? CalendarDatePicker2Type.single,
         firstDate = firstDate ?? DateTime(1970),
         lastDate = lastDate ?? DateTime(DateTime.now().year + 50),
@@ -91,6 +94,9 @@ class CalendarDatePicker2Config {
   /// The control color
   final Color? controlColor;
 
+  /// Focused day on dialog
+  final CalendarDatePicker2FocusedDay focusedDay;
+
   CalendarDatePicker2Config copyWith({
     CalendarDatePicker2Type? calendarType,
     DateTime? firstDate,
@@ -112,6 +118,7 @@ class CalendarDatePicker2Config {
     TextStyle? todayTextStyle,
     TextStyle? yearTextStyle,
     Color? controlColor,
+    CalendarDatePicker2FocusedDay? focusedDay,
   }) {
     return CalendarDatePicker2Config(
       calendarType: calendarType ?? this.calendarType,
@@ -136,6 +143,7 @@ class CalendarDatePicker2Config {
       todayTextStyle: todayTextStyle ?? this.todayTextStyle,
       yearTextStyle: yearTextStyle ?? this.yearTextStyle,
       controlColor: controlColor ?? this.controlColor,
+      focusedDay: focusedDay ?? this.focusedDay,
     );
   }
 }
@@ -163,6 +171,8 @@ class CalendarDatePicker2WithActionButtonsConfig
     TextStyle? todayTextStyle,
     TextStyle? yearTextStyle,
     Color? controlColor,
+    CalendarDatePicker2FocusedDay focusedDay =
+        CalendarDatePicker2FocusedDay.initial,
     this.gapBetweenCalendarAndButtons,
     this.cancelButtonTextStyle,
     this.cancelButton,
@@ -191,6 +201,7 @@ class CalendarDatePicker2WithActionButtonsConfig
           todayTextStyle: todayTextStyle,
           yearTextStyle: yearTextStyle,
           controlColor: controlColor,
+          focusedDay: focusedDay,
         );
 
   /// The gap between calendar and action buttons
@@ -236,6 +247,7 @@ class CalendarDatePicker2WithActionButtonsConfig
     TextStyle? todayTextStyle,
     TextStyle? yearTextStyle,
     Color? controlColor,
+    CalendarDatePicker2FocusedDay? focusedDay,
     double? gapBetweenCalendarAndButtons,
     TextStyle? cancelButtonTextStyle,
     Widget? cancelButton,
@@ -267,6 +279,7 @@ class CalendarDatePicker2WithActionButtonsConfig
       todayTextStyle: todayTextStyle ?? this.todayTextStyle,
       yearTextStyle: yearTextStyle ?? this.yearTextStyle,
       controlColor: controlColor ?? this.controlColor,
+      focusedDay: focusedDay ?? this.focusedDay,
       gapBetweenCalendarAndButtons:
           gapBetweenCalendarAndButtons ?? this.gapBetweenCalendarAndButtons,
       cancelButtonTextStyle:

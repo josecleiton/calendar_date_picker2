@@ -92,8 +92,13 @@ class _CalendarDatePicker2State extends State<CalendarDatePicker2> {
             widget.initialValue[0] != null
         ? DateTime(widget.initialValue[0]!.year, widget.initialValue[0]!.month)
         : DateUtils.dateOnly(DateTime.now());
+    final currentDate = config.currentDate;
     _mode = config.calendarViewMode;
-    _currentDisplayedMonthDate = DateTime(initialDate.year, initialDate.month);
+    final focusedDay =
+        config.focusedDay == CalendarDatePicker2FocusedDay.initial
+            ? initialDate
+            : currentDate;
+    _currentDisplayedMonthDate = DateTime(focusedDay.year, focusedDay.month);
     _selectedDates = widget.initialValue;
   }
 
